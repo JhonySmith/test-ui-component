@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
-import GlobalFonts from './components/fonts/global-fonts';
-import Tabs from './components/Tabs';
+import GlobalFonts from './components/Tabs/fonts/global-fonts';
+import Tabs from './components/Tabs/Tabs';
 
-const tabs: string[] = ['Pasted', 'Books', 'Articles'];
+import { TabsTypes, TabsArrayTypes } from './components/types/types';
+
+const tabs: TabsArrayTypes = ['Pasted', 'Books', 'Articles'];
 
 const App: React.FC = () => {
-	const [selected, setSelected] = useState<'Pasted' | 'Books' | 'Articles'>(
-		'Pasted'
-	);
+	const [selected, setSelected] = useState<TabsTypes>('Pasted');
 
-	const onTabClick = function (tab: 'Pasted' | 'Books' | 'Articles'): void {
+	const onTabClick = function (tab: TabsTypes): void {
 		setSelected(tab);
 	};
 
 	return (
 		<>
 			<GlobalFonts />
-			<Tabs tabs={tabs} selected={selected} onTabClick={onTabClick} />
+			<Tabs
+				tabs={tabs}
+				selected={selected}
+				onSelect={onTabClick}
+				duration={1}
+			/>
 		</>
 	);
 };

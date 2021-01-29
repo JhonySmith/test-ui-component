@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
-interface ITab {
+interface ITabItem {
 	selected: boolean;
+	duration: number;
 }
 
-export const Tab = styled.li<ITab>`
+export const TabItem = styled.li<ITabItem>`
 	padding: 8px 16px 8px 16px;
 	border-radius: 8px;
 	cursor: pointer;
-	transition: background-color 1s;
+	transition: background-color ${(props) => props.duration}s;
 	background-color: ${(props) => (props.selected ? '#f9da36' : 'white')};
 
 	&:hover {
